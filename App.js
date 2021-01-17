@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
+import Menu from './Screen/Menu';
+import { NavigationContainer } from '@react-navigation/native';
 
 const cacheImages = (images) =>
   images.map((image) => {
@@ -16,6 +18,8 @@ const cacheImages = (images) =>
   });
 
 const cacheFont = (fonts) => fonts.map((font) => Font.loadAsync(font));
+
+const userContext = React.createContext(null);
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -31,12 +35,18 @@ export default function App() {
   };
 
   return isReady ? (
-    <View style={styles.container}>
-      <Text>asd</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <userContext.Provider>
+        <NavigationContainer>
+          <Menu />
+        </NavigationContainer>
+      </userContext.Provider>
+      <StatusBar barStyle="light-content" />
+    </>
   ) : (
-    <AppLoading startAsync={loadAssets} onFinish={loadingFinish} onError={console.warn} />
+    <>
+      <AppLoading startAsync={loadAssets} onFinish={loadingFinish} onError={console.warn} />
+    </>
   );
 }
 
