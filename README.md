@@ -48,13 +48,13 @@ Your project may not work correctly until you install the correct versions of th
 To install the correct versions of these packages, please run: expo install [package-name ...]
 ``` 
 
-버전이 금방금방 변경되네 아 .. 씨 
+급격한 버전 변화에 따른 이슈 존재.. 
 Error: The following APIs have moved to separate packages and importing them from the "expo" package is no longer supported: AppLoading.
 1. Add correct versions of these packages to your project using:
    expo install expo-app-loading
 2. Change your imports so they use specific packages instead of the "expo" package:
  - import { AppLoading } from 'expo' -> import AppLoading from 'expo-app-loading'
 
- 탭에서만 탭내의 메뉴의 헤더를 수정할 수 있으니까 상당히 이상하네 .. 아 .. 좀 고민해보자 
+ 탭에서만 탭내의 메뉴의 헤더를 수정할 수 있으니까 이상함
 
  
